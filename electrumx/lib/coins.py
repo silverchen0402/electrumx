@@ -90,8 +90,11 @@ class Coin:
     WIF_BYTE = bytes.fromhex("80")
     ENCODE_CHECK = Base58.encode_check
     DECODE_CHECK = Base58.decode_check
-    GENESIS_HASH = ('000000000019d6689c085ae165831e93'
+    __GENESIS_HASH = ('000000000019d6689c085ae165831e93'
                     '4ff763ae46a2a6c172b3f1b60a8ce26f')
+    GENESIS_HASH = ('4b787cb07e199c33ad7ae909a5af3fa8'
+                      'b9e52669389e367546f9762df24dcd91')
+
     GENESIS_ACTIVATION = 100_000_000
     # Peer discovery
     PEER_DEFAULT_PORTS = {'t': '50001', 's': '50002'}
@@ -628,7 +631,7 @@ class Bitcoin(BitcoinMixin, Coin):
     TX_PER_BLOCK = 2200
     CRASH_CLIENT_VER = (3, 2, 3)
     BLACKLIST_URL = 'https://electrum.org/blacklist.json'
-    PEERS = [
+    __PEERS = [
         'electrum.vom-stausee.de s t',
         'electrum.hsmiths.com s t',
         'helicarrier.bauerj.eu s t',
@@ -645,7 +648,7 @@ class Bitcoin(BitcoinMixin, Coin):
         'vps5.hsmiths.com s',
         'electrum.emzy.de s',
     ]
-
+    PEERS = ['192.168.1.102 s']
     @classmethod
     def warn_old_client_on_tx_broadcast(cls, client_ver):
         if client_ver < (3, 3, 3):
